@@ -76,7 +76,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 
 		//add code to move Ship, Alien, etc.
-
+                if(keys[1] == true)
+		{
+			ship.move("RIGHT");
+		}
+                
+                if(keys[2] == true)
+		{
+			ship.move("UP");
+		}
+                
+                if(keys[3] == true)
+		{
+			ship.move("DOWN");
+		}
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
 
