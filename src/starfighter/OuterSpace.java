@@ -38,6 +38,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		keys = new boolean[5];
 
 		//instantiate other instance variables
+                ship = new Ship();
 		//Ship, Alien
 
 		this.addKeyListener(this);
@@ -69,6 +70,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.drawString("StarFighter ", 25, 50 );
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
+                
+                ship.draw(graphToBack);
 
 		if(keys[0] == true)
 		{
