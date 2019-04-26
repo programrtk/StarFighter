@@ -19,7 +19,7 @@ public class Ship extends MovingThing
 
 	public Ship()
 	{
-            this(50, 50, 50, 50, 0);
+            this(75, 440, 50, 50, 0);
             speed = 1;
 	}
 
