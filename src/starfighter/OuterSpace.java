@@ -22,6 +22,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienOne;
 	private Alien alienTwo;
         private Ammo ammoOne;
+        
+        private Boolean shoot;
 
 	/* uncomment once you are ready for this part
 	 *
@@ -46,7 +48,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
                 alienTwo = new Alien(150, 30);
 
-                ammoOne = new Ammo(50, 50);
+                
                 
                 
 		this.addKeyListener(this);
@@ -87,7 +89,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 alienOne.draw(graphToBack);
                 alienTwo.draw(graphToBack);
                 
-                ammoOne.draw(graphToBack);
+                //ammoOne.draw(graphToBack);
 
 		if(keys[0] == true)
 		{
@@ -109,9 +111,25 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
                     ship.move("UP");
 		}
+                
+                if(keys[4] == true)
+                {
+                    //ammoOne.setX(ship.getX() + 20);
+                    //ammoOne.setY(ship.getY());
+                    
+                    ammoOne = new Ammo(ship.getX() + 20, ship.getY());
+                    shoot = true;
+                    ammoOne.draw(graphToBack);
+                }
+                
+                if(shoot){
+                    ammoOne.draw(graphToBack);
+                    /*if(ammoOne.getY() == 0){
+                        shoot = false;
+                    }*/
+                }
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
-
 
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
