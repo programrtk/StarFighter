@@ -24,7 +24,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 
 	/* uncomment once you are ready for this part
 	 *
-   private AlienHorde horde;
+        private AlienHorde horde;
 	private Bullets shots;
 	*/
 
@@ -40,10 +40,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//instantiate other instance variables
                 ship = new Ship();
 		//Ship, Alien
+                
 
 		this.addKeyListener(this);
-		new Thread(this).start();
-
+		
+                
+                
+                new Thread(this).start();
 		setVisible(true);
 	}
 
@@ -71,27 +74,28 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
                 
+                
                 ship.draw(graphToBack);
 
 		if(keys[0] == true)
 		{
-			ship.move("LEFT");
+                    ship.move("LEFT");
 		}
 
 		//add code to move Ship, Alien, etc.
                 if(keys[1] == true)
 		{
-			ship.move("RIGHT");
+                    ship.move("RIGHT");
 		}
                 
                 if(keys[2] == true)
 		{
-			ship.move("UP");
+                    ship.move("DOWN");
 		}
                 
                 if(keys[3] == true)
 		{
-			ship.move("DOWN");
+                    ship.move("UP");
 		}
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship

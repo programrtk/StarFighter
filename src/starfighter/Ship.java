@@ -15,16 +15,19 @@ public class Ship extends MovingThing
 {
 	private int speed;
 	private Image image;
+        //private MovingThing m;
 
 	public Ship()
 	{
             this(50, 50, 50, 50, 0);
+            speed = 1;
 	}
 
 	public Ship(int x, int y)
 	{
 	   //add code here
            this(x, y, 50, 50, 0);
+           speed = 1;
 	}
 
 	public Ship(int x, int y, int s)
@@ -38,6 +41,7 @@ public class Ship extends MovingThing
 	{
 		super(x, y, w, h);
 		speed=s;
+                //m.setSpeed(s);
 		try
 		{
 			URL url = getClass().getResource("/starfighter/images/ship.jpg");
@@ -59,7 +63,7 @@ public class Ship extends MovingThing
 
 	public int getSpeed()
 	{
-	   return 0;
+	   return speed;
 	}
 
 	public void move(String direction)
@@ -77,7 +81,7 @@ public class Ship extends MovingThing
             if(direction.equals("DOWN")){
                 setY(getY() - speed);
             }
-            
+            System.out.println(getX() +", "+ getY());
 	}
 
 	public void draw( Graphics window )
@@ -87,6 +91,6 @@ public class Ship extends MovingThing
 
 	public String toString()
 	{
-		return super.toString() + getSpeed();
+		return super.toString() + "" + getSpeed();
 	}
 }
