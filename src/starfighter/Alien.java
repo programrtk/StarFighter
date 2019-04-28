@@ -60,14 +60,26 @@ public class Alien extends MovingThing
 	   return speed;
 	}
 
-   public void move(String direction)
+        public void move(String direction)
 	{
-	   //add code here
+            //add code here
+            if(direction.equals("moveAlien")){
+                setX(getX() + speed);
+                if(getX() == 780)
+                {
+                    setY(getY() + 30);
+                    setX(10);
+                }
+            }
+            
+	   
 	}
 
 	public void draw( Graphics window )
 	{
             window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+            
+            move("moveAlien");
 	}
 
 	public String toString()
