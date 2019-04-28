@@ -22,14 +22,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Alien alienOne;
 	private Alien alienTwo;
         private Ammo ammoOne;
+        private Boolean shoot = false;
         
-        private Boolean shoot;
-
-	/* uncomment once you are ready for this part
-	 *
         private AlienHorde horde;
-	private Bullets shots;
-	*/
+	
+        private Bullets shots;
+	
 
 	private boolean[] keys;
 	private BufferedImage back;
@@ -44,17 +42,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 ship = new Ship();
 		//Ship, Alien
                 
-                alienOne = new Alien(80,30);
+                alienOne = new Alien(80,30, 1);
                 
-                alienTwo = new Alien(150, 30);
-
+                alienTwo = new Alien(150, 30, 1);
                 
+		shots = new Bullets();
                 
-                
-		this.addKeyListener(this);
+                this.addKeyListener(this);
 		
-                
-                
                 new Thread(this).start();
 		setVisible(true);
 	}
@@ -113,20 +108,37 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
                 
                 if(keys[4] == true)
-                {
-                    //ammoOne.setX(ship.getX() + 20);
-                    //ammoOne.setY(ship.getY());
+                {   
+                    //ammoOne = new Ammo(ship.getX() + 20, ship.getY());
                     
-                    ammoOne = new Ammo(ship.getX() + 20, ship.getY());
-                    shoot = true;
-                    ammoOne.draw(graphToBack);
+                    Ammo al = new Ammo(ship.getX() + 20, ship.getY());
+                    
+                    shots.add(al);
+                    
+                    System.out.println("shots size: " + shots.getSize());
+                    
+                    shots.drawEmAll(window);
+                    
+                    //shoot = true;
+                    
+                }else if(keys[4] == false)
+                {
+                    shots.cleanEmUp();
                 }
                 
                 if(shoot){
-                    ammoOne.draw(graphToBack);
-                    /*if(ammoOne.getY() == 0){
+                    
+                    //draws and moves the ammo
+                    //ammoOne.draw(graphToBack);
+                    
+                    
+                    
+                    
+                    
+                    //shoot is false when ammo is out of screen
+                    if(ammoOne.getY() == 0){
                         shoot = false;
-                    }*/
+                    }
                 }
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
@@ -157,7 +169,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			keys[4] = true;
 		}
-		repaint();
+		//repaint();
 	}
 
 	public void keyReleased(KeyEvent e)
@@ -182,7 +194,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			keys[4] = false;
 		}
-		repaint();
+		//repaint();
 	}
 
 	public void keyTyped(KeyEvent e)
