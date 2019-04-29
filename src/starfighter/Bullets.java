@@ -63,7 +63,7 @@ public class Bullets
 	{
 		return bullet;
 	}
-
+                
 	public String toString()
 	{
 		return "";
