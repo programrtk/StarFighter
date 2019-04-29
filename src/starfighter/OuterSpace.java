@@ -48,6 +48,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
 		shots = new Bullets();
                 
+                horde = new AlienHorde(10);
+                
                 this.addKeyListener(this);
 		
                 new Thread(this).start();
@@ -83,6 +85,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
                 alienOne.draw(graphToBack);
                 alienTwo.draw(graphToBack);
+                
+                horde.drawEmAll(window);
                 
                 //ammoOne.draw(graphToBack);
 
