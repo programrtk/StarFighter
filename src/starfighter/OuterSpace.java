@@ -24,13 +24,15 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
         private Ammo ammoOne;
         private Boolean shoot = false;
         
-        private AlienHorde horde;
+        private AlienHorde horde, horde2;
 	
         private Bullets shots;
 	
 
 	private boolean[] keys;
 	private BufferedImage back;
+        
+        private int NumOfAliens;
 
 	public OuterSpace()
 	{
@@ -42,13 +44,28 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 ship = new Ship();
 		//Ship, Alien
                 
-                alienOne = new Alien(80,30, 1);
+                //alienOne = new Alien(80,30, 1);
                 
-                alienTwo = new Alien(150, 30, 1);
+                //alienTwo = new Alien(150, 30, 1);
                 
 		shots = new Bullets();
                 
-                horde = new AlienHorde(10);
+                
+                NumOfAliens = 10;
+                
+                horde = new AlienHorde(NumOfAliens);
+                
+                horde2 = new AlienHorde(NumOfAliens);
+                
+                for(int i = 0; i < NumOfAliens; i++)
+                {
+                    horde.add(new Alien(55*i, 30, 1));
+                    
+                    horde.add(new Alien(55*i + 30, 70, 1));
+                }
+                
+                
+                
                 
                 this.addKeyListener(this);
 		
@@ -66,7 +83,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//set up the double buffering to make the game animation nice and smooth
 		Graphics2D twoDGraph = (Graphics2D)window;
 
-		//take a snap shop of the current screen and same it as an image
+		//take a snap shop of the current screen and save it as an image
 		//that is the exact same width and height as the current screen
 		if(back==null)
 		   back = (BufferedImage)(createImage(getWidth(),getHeight()));
@@ -83,10 +100,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
                 ship.draw(graphToBack);
                 
-                alienOne.draw(graphToBack);
-                alienTwo.draw(graphToBack);
+                //alienOne.draw(graphToBack);
+                //alienTwo.draw(graphToBack);
                 
-                horde.drawEmAll(window);
+                horde.drawEmAll(graphToBack);
                 
                 //ammoOne.draw(graphToBack);
 
@@ -115,13 +132,11 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 {   
                     //ammoOne = new Ammo(ship.getX() + 20, ship.getY());
                     
-                    Ammo al = new Ammo(ship.getX() + 20, ship.getY());
-                    
-                    shots.add(al);
+                    shots.add(new Ammo(ship.getX() + 20, ship.getY()));
                     
                     System.out.println("shots size: " + shots.getSize());
                     
-                    shots.drawEmAll(window);
+                    shots.drawEmAll(graphToBack);
                     
                     //shoot = true;
                     
@@ -134,10 +149,6 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                     
                     //draws and moves the ammo
                     //ammoOne.draw(graphToBack);
-                    
-                    
-                    
-                    
                     
                     //shoot is false when ammo is out of screen
                     if(ammoOne.getY() == 0){

@@ -36,7 +36,7 @@ public class AlienHorde
 
 	public void add(Alien al)
 	{
-            aliens.add(new Alien(al.getX(), al.getY()));
+            aliens.add(new Alien(al.getX(), al.getY(), al.getSpeed()));
 	}
 
 	public void drawEmAll( Graphics window )
@@ -45,14 +45,15 @@ public class AlienHorde
                 window.drawImage(image ,a.getX(),a.getY(),a.getWidth(),a.getHeight(),null);
             }
             
-            moveEmAll();
+            moveEmAll(window);
 	}
 
-	public void moveEmAll()
+	public void moveEmAll(Graphics window)
 	{
             for(Alien a : aliens)
             {
                 a.setX(a.getX() + a.getSpeed());
+                System.out.println("xPosition: "+a.getX() +" ,Speed: "+a.getSpeed());
                 if(a.getX() == 780)
                 {
                     a.setY(a.getY() + 30);

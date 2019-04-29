@@ -37,6 +37,7 @@ public class Alien extends MovingThing
 	{
 		super(x, y, w,h);
 		speed=s;
+                System.out.println("Speed: "+ speed);
 		try
 		{
 			URL url = getClass().getResource("/images/alien.jpg");
@@ -59,7 +60,7 @@ public class Alien extends MovingThing
 	{
 	   return speed;
 	}
-
+        
         public void move(String direction)
 	{
             //add code here
