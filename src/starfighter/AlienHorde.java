@@ -65,6 +65,45 @@ public class AlienHorde
 
 	public void removeDeadOnes(List<Ammo> shots)
 	{
+            int amx, amy, alx, aly, alw, alh;
+            //Alien deadAl = new Alien();
+            boolean isDead = false;
+            
+            List<Alien> deadAl = new ArrayList<Alien>();
+            
+            for(Ammo am : shots)
+            {
+                amx = am.getX();
+                amy = am.getY();
+                for(Alien al : aliens)
+                {
+                    
+                    
+                    alx = al.getX();
+                    aly = al.getY();
+                    alw = al.getWidth();
+                    alh = al.getHeight();
+                    //System.out.println("amx: "+amx+" alx: "+alx+" alw: "+alw+" amy: "+amy+ " aly: "+aly+ "alh: "+alh);
+                    
+                    if((amx > alx && amx < (alx + alw)) && (amy > aly && amy < (aly + alh )) )
+                    {
+                        //System.out.println("Collision happened");
+                        //aliens.remove(al);
+                        deadAl.add(al);
+                        isDead = true;
+                    }
+                }
+                if(isDead)
+                    {
+                        for(Alien dAl : deadAl){
+                            aliens.remove(dAl);
+                        }
+                        isDead = false;
+                    }
+            }    
+            
+            
+            
 	}
 
 	public String toString()

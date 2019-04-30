@@ -105,6 +105,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
                 horde.drawEmAll(graphToBack);
                 
+                horde.removeDeadOnes(shots.getList());
+                
                 //ammoOne.draw(graphToBack);
 
 		if(keys[0] == true)
