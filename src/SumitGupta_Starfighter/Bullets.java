@@ -1,4 +1,4 @@
-package starfighter;
+package SumitGupta_Starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -25,7 +25,7 @@ public class Bullets
 	public void add(Ammo al)
 	{
             bullet.add(new Ammo(al.getX(), al.getY()));
-            System.out.println("Size: "+ bullet.size() + ", xPos: "+ al.getX()+ ", yPos: "+ al.getY());
+            //System.out.println("Size: "+ bullet.size() + ", xPos: "+ al.getX()+ ", yPos: "+ al.getY());
 	}
         
         public int getSize()

@@ -1,4 +1,4 @@
-package starfighter;
+package SumitGupta_Starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -38,24 +38,25 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	{
 		setBackground(Color.black);
 
-		keys = new boolean[5];
+		keys = new boolean[6];
 
+                System.out.println("Sumit Gupta, P. 1, 5/8/2019, Computer #11");
+                
 		//instantiate other instance variables
                 ship = new Ship();
 		//Ship, Alien
                 
-                //alienOne = new Alien(80,30, 1);
+                alienOne = new Alien(90,40, 1);
                 
-                //alienTwo = new Alien(150, 30, 1);
+                alienTwo = new Alien(150, 40, 1);
                 
 		shots = new Bullets();
-                
                 
                 NumOfAliens = 10;
                 
                 horde = new AlienHorde(NumOfAliens);
                 
-                horde2 = new AlienHorde(NumOfAliens);
+                //horde2 = new AlienHorde(NumOfAliens);
                 
                 for(int i = 0; i < NumOfAliens; i++)
                 {
@@ -100,15 +101,19 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                 
                 ship.draw(graphToBack);
                 
-                //alienOne.draw(graphToBack);
-                //alienTwo.draw(graphToBack);
-                
+                alienOne.draw(graphToBack);
+                alienTwo.draw(graphToBack);
+               
                 horde.drawEmAll(graphToBack);
+               
+                //this is where I have aliens shoot
+                for(int i = 0; i < NumOfAliens; i = i+2){
+                    ammoOne = new Ammo(horde.get(i).getX() + 10, horde.get(i).getY() + 25);
+                    ammoOne.draw(graphToBack);
+                }
                 
                 horde.removeDeadOnes(shots.getList());
-                
-                //ammoOne.draw(graphToBack);
-
+             
 		if(keys[0] == true)
 		{
                     ship.move("LEFT");
@@ -136,7 +141,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                     
                     shots.add(new Ammo(ship.getX() + 20, ship.getY()));
                     
-                    System.out.println("shots size: " + shots.getSize());
+                    //System.out.println("shots size: " + shots.getSize());
                     
                     shots.drawEmAll(graphToBack);
                     
@@ -156,6 +161,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
                     if(ammoOne.getY() == 0){
                         shoot = false;
                     }
+                }
+                
+                if(keys[5] == true){
+                    
                 }
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
@@ -186,6 +195,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			keys[4] = true;
 		}
+                if (e.getKeyCode() == KeyEvent.VK_S)
+                {
+                        keys[5] = true;
+                }
 		//repaint();
 	}
 
@@ -211,6 +224,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			keys[4] = false;
 		}
+                if  (e.getKeyCode() == KeyEvent.VK_S){
+                        
+                        keys[5] = false;
+                }
 		//repaint();
 	}
 

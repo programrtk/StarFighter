@@ -1,4 +1,4 @@
-package starfighter;
+package SumitGupta_Starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -24,7 +24,7 @@ public class AlienHorde
             
             try
 		{
-			URL url = getClass().getResource("/images/alien.jpg");
+			URL url = getClass().getResource("/starfighter/images/alien.jpg");
 			image = ImageIO.read(url);
 		}
 		catch(Exception e)
@@ -53,15 +53,19 @@ public class AlienHorde
             for(Alien a : aliens)
             {
                 a.setX(a.getX() + a.getSpeed());
-                System.out.println("xPosition: "+a.getX() +" ,Speed: "+a.getSpeed());
+                //System.out.println("xPosition: "+a.getX() +" ,Speed: "+a.getSpeed());
                 if(a.getX() == 780)
                 {
                     a.setY(a.getY() + 30);
                     a.setX(10);
                 }
             }
-            
+    
 	}
+        
+        public Alien get(int i){
+            return aliens.get(i);
+        }
 
 	public void removeDeadOnes(List<Ammo> shots)
 	{

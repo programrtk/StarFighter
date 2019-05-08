@@ -1,4 +1,4 @@
-package starfighter;
+package SumitGupta_Starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com

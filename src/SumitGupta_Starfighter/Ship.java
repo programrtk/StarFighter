@@ -1,4 +1,4 @@
-package starfighter;
+package SumitGupta_Starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -81,7 +81,7 @@ public class Ship extends MovingThing
             if(direction.equals("DOWN")){
                 setY(getY() - speed);
             }
-            System.out.println(getX() +", "+ getY());
+            //System.out.println(getX() +", "+ getY());
 	}
 
 	public void draw( Graphics window )
